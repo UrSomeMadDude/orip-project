@@ -3,9 +3,13 @@ import type React from 'react'
 import styles from './Task.module.scss'
 import classNames from 'classnames/bind'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { selectTasks, updateTask } from '../../redux/features/authSlice'
+import {
+  deleteTask,
+  selectTasks,
+  updateTask
+} from '../../redux/features/authSlice'
 import { type ITask } from '../../redux/appConfig'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Field, Form, Formik } from 'formik'
 import { TextField, Typography } from '@mui/material'
 import Select from '../../components/Select'
@@ -14,6 +18,7 @@ import ButtonWrapper from '../../components/ButtonWrapper'
 const cx = classNames.bind(styles)
 
 function Task(): ReactElement<React.FC> {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const tasks = useAppSelector(selectTasks)
@@ -38,6 +43,7 @@ function Task(): ReactElement<React.FC> {
         enableReinitialize
         onSubmit={(values: ITask) => {
           dispatch(updateTask(values))
+          navigate(-1, { replace: true })
         }}
       >
         {({ values, submitForm }) => (
@@ -53,6 +59,12 @@ function Task(): ReactElement<React.FC> {
               as={TextField}
               value={values.time}
               placeholder="Оцененное время"
+            />
+            <Field
+              name="userID"
+              as={TextField}
+              value={values.userID}
+              placeholder="ID пользователя"
             />
             <Field
               name="status"
@@ -87,6 +99,15 @@ function Task(): ReactElement<React.FC> {
               text="Сохранить"
               onClick={() => {
                 void submitForm()
+              }}
+            />
+            <ButtonWrapper
+              sizing="extended"
+              text="Удалить"
+              color="error"
+              onClick={() => {
+                dispatch(deleteTask(task?.id))
+                navigate(-1, { replace: true })
               }}
             />
           </Form>

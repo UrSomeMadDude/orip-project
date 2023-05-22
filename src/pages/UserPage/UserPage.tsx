@@ -3,21 +3,21 @@ import type React from 'react'
 import styles from './user.module.scss'
 import classNames from 'classnames/bind'
 import { Typography } from '@mui/material'
-import { useAppSelector } from '../../redux/hooks'
-import { selectTasks, selectCompanyUsers } from '../../redux/features/authSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import {
+  selectTasks,
+  selectCompanyUsers,
+  deleteUser
+} from '../../redux/features/authSlice'
 import { type ICompanyUser, type ITask } from '../../redux/appConfig'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import ButtonWrapper from '../../components/ButtonWrapper'
 
 const cx = classNames.bind(styles)
-const imageUrl =
-  'https://sun9-49.userapi.com/impg/8Sqr66V_U9U_WPyZ_gaJGfniAQs8FYKeQDUE3A/_1bNFaJGf_o.jpg?size=683x1024&quality=95&sign=7535fe3db26ceb504b904f610102336e&type=album'
 
-interface UserPageProps {
-  fullName?: string
-  date?: string
-}
-
-function UserPage(props: UserPageProps): ReactElement<React.FC> {
+function UserPage(): ReactElement<React.FC> {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const { id } = useParams()
   console.log(id)
 
@@ -64,6 +64,21 @@ function UserPage(props: UserPageProps): ReactElement<React.FC> {
               {user?.date}
             </Typography>
           </div>
+        </div>
+        <div
+          style={{
+            marginTop: '25px'
+          }}
+        >
+          <ButtonWrapper
+            sizing="s"
+            text="Удалить"
+            color="error"
+            onClick={() => {
+              dispatch(deleteUser(user?.id))
+              navigate(-1, { replace: true })
+            }}
+          />
         </div>
       </div>
       <div className={cx('user__profile-data')}>

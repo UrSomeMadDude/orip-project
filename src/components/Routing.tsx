@@ -30,12 +30,7 @@ function Routing(): ReactElement<React.FC> {
           element={<Navigate to={'/users/some_mad'} />}
         />
         <Route path={routes.users} element={<UsersListPage />} />
-        <Route
-          path={routes.mainUser}
-          element={
-            <UserPage fullName="Лысенко Игорь Дмитриевич" date="18.05.2003" />
-          }
-        />
+        <Route path={routes.mainUser} element={<UserPage />} />
         <Route path={routes.user} element={<UserPage />} />
         <Route path={routes.tasks} element={<Tasks />} />
         <Route path={routes.task} element={<Task />} />

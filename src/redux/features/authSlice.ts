@@ -98,13 +98,19 @@ export const authSlice = createSlice({
       })
       state.currentUserID += 1
     },
-    deleteTask: (state: AuthState, action: PayloadAction<number>) => {
+    deleteTask: (
+      state: AuthState,
+      action: PayloadAction<number | undefined>
+    ) => {
       return {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload)
       }
     },
-    deleteUser: (state: AuthState, action: PayloadAction<number>) => {
+    deleteUser: (
+      state: AuthState,
+      action: PayloadAction<number | undefined>
+    ) => {
       return {
         ...state,
         companyUsers: state.companyUsers.filter(
