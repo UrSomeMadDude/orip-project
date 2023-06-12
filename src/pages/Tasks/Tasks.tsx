@@ -7,6 +7,7 @@ import { useAppSelector } from '../../redux/hooks'
 import { selectTasks } from '../../redux/features/authSlice'
 import { type ITask } from '../../redux/appConfig'
 import DataGridDemo from '../../components/DataTable'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -28,6 +29,11 @@ function Tasks(): ReactElement<React.FC> {
       <div className={cx('userslist__title')}>
         <Typography variant="h2">Задачи</Typography>
       </div>
+      <Link to="/tasks/create">
+        <Typography variant="h6" color="#000">
+          Создать
+        </Typography>
+      </Link>
       <div className={cx('userslist__table')}>
         <DataGridDemo type="task" rows={rows} />
       </div>

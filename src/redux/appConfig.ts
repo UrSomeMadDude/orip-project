@@ -35,21 +35,21 @@ export const tasks: ITask[] = [
     userID: 1,
     title: 'Почистить зубы',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 4,
     userID: 1,
     title: 'Почистить штаны',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 5,
     userID: 1,
     title: 'Почистить кастрюли',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 6,
@@ -70,21 +70,21 @@ export const tasks: ITask[] = [
     userID: 2,
     title: 'Почистить зубы',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 9,
     userID: 2,
     title: 'Почистить штаны',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 10,
     userID: 2,
     title: 'Почистить кастрюли',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 11,
@@ -105,21 +105,21 @@ export const tasks: ITask[] = [
     userID: 3,
     title: 'Почистить зубы',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 14,
     userID: 3,
     title: 'Почистить штаны',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 15,
     userID: 3,
     title: 'Почистить кастрюли',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 16,
@@ -140,21 +140,21 @@ export const tasks: ITask[] = [
     userID: 4,
     title: 'Почистить зубы',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 19,
     userID: 4,
     title: 'Почистить штаны',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   },
   {
     id: 20,
     userID: 4,
     title: 'Почистить кастрюли',
     time: '30 minutes',
-    status: 'to do'
+    status: 'not done'
   }
 ]
 

@@ -19,11 +19,9 @@ function UserPage(): ReactElement<React.FC> {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { id } = useParams()
-  console.log(id)
 
   const tasks = useAppSelector(selectTasks)
   const users = useAppSelector(selectCompanyUsers)
-  console.log(tasks)
 
   const [userTasks, setUserTasks] = useState<ITask[]>([])
   const [user, setUser] = useState<ICompanyUser | null>(null)
@@ -35,7 +33,6 @@ function UserPage(): ReactElement<React.FC> {
         : task.userID === Number(id)
     )
     setUserTasks(userTasks)
-    console.log(userTasks)
   }, [tasks])
 
   useEffect(() => {
@@ -65,21 +62,23 @@ function UserPage(): ReactElement<React.FC> {
             </Typography>
           </div>
         </div>
-        <div
-          style={{
-            marginTop: '25px'
-          }}
-        >
-          <ButtonWrapper
-            sizing="s"
-            text="Удалить"
-            color="error"
-            onClick={() => {
-              dispatch(deleteUser(user?.id))
-              navigate(-1, { replace: true })
+        {id !== undefined && (
+          <div
+            style={{
+              marginTop: '25px'
             }}
-          />
-        </div>
+          >
+            <ButtonWrapper
+              sizing="s"
+              text="Удалить"
+              color="error"
+              onClick={() => {
+                dispatch(deleteUser(user?.id))
+                navigate(-1, { replace: true })
+              }}
+            />
+          </div>
+        )}
       </div>
       <div className={cx('user__profile-data')}>
         <div className={cx('user__profile-data__table')}>

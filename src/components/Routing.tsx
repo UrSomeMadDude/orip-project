@@ -18,6 +18,7 @@ export const routes = {
   mainUser: '/users/some_mad',
   tasks: '/tasks',
   task: '/tasks/:id',
+  createTask: '/tasks/create',
   any: '*'
 }
 
@@ -34,6 +35,7 @@ function Routing(): ReactElement<React.FC> {
         <Route path={routes.user} element={<UserPage />} />
         <Route path={routes.tasks} element={<Tasks />} />
         <Route path={routes.task} element={<Task />} />
+        <Route path={routes.createTask} element={<Task type="create" />} />
       </Route>
       <Route path={routes.login} element={<LoginPage />} />
       <Route path={routes.any} element={<Navigate to={routes.login} />} />

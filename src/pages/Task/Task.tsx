@@ -4,6 +4,7 @@ import styles from './Task.module.scss'
 import classNames from 'classnames/bind'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import {
+  addTaks,
   deleteTask,
   selectTasks,
   updateTask
@@ -17,7 +18,7 @@ import ButtonWrapper from '../../components/ButtonWrapper'
 
 const cx = classNames.bind(styles)
 
-function Task(): ReactElement<React.FC> {
+function Task(type?: 'edit' | 'create'): ReactElement<React.FC> {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { id } = useParams()
@@ -31,10 +32,17 @@ function Task(): ReactElement<React.FC> {
     }
   }, [tasks])
 
-  const initialValues: ITask = {
-    ...task
-  }
-  console.log(task)
+  const initialValues: ITask =
+    type.type === 'create'
+      ? {
+          title: '',
+          time: '',
+          userID: '',
+          status: ''
+        }
+      : {
+          ...task
+        }
 
   return (
     <div className={cx('task__container')}>
@@ -42,8 +50,13 @@ function Task(): ReactElement<React.FC> {
         initialValues={initialValues}
         enableReinitialize
         onSubmit={(values: ITask) => {
-          dispatch(updateTask(values))
-          navigate(-1, { replace: true })
+          if (type.type === 'create') {
+            dispatch(addTaks(values))
+            navigate(-1)
+          } else {
+            dispatch(updateTask(values))
+            navigate(-1, { replace: true })
+          }
         }}
       >
         {({ values, submitForm }) => (

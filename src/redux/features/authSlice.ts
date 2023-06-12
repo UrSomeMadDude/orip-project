@@ -82,14 +82,8 @@ export const authSlice = createSlice({
     },
 
     addTaks: (state: AuthState, action: PayloadAction<ITask>) => {
-      state.companyUsers.forEach((user) => {
-        if (user.id === action.payload.userID) {
-          state.tasks.push({ ...action.payload, id: state.currentTaskID + 1 })
-          state.currentTaskID += 1
-          // eslint-disable-next-line no-useless-return
-          return
-        }
-      })
+      state.tasks.push({ ...action.payload, id: state.currentTaskID + 1 })
+      state.currentTaskID += 1
     },
     addUser: (state: AuthState, action: PayloadAction<ICompanyUser>) => {
       state.companyUsers.push({

@@ -49,7 +49,7 @@ function Header(): ReactElement<React.FC> {
       </div>
       <ButtonWrapper
         sizing="s"
-        color="error"
+        color="secondary"
         text="Выйти"
         onClick={() => {
           dispatch(logOut())
