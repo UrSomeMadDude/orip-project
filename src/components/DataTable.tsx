@@ -18,9 +18,11 @@ const UserColumns: GridColDef[] = [
       </Typography>
     ),
     renderCell: ({ row }) => (
-      <Typography variant="body1" color="#000">
-        {row.id}
-      </Typography>
+      <Link to={`/users/${row.id}`}>
+        <Typography variant="body1" color="#000">
+          {row.id}
+        </Typography>
+      </Link>
     )
   },
   {
@@ -28,18 +30,16 @@ const UserColumns: GridColDef[] = [
     flex: 0.4,
     headerAlign: 'center',
     align: 'center',
+    editable: true,
     renderHeader: () => (
       <Typography variant="body1" color="#000">
         ФИО
       </Typography>
     ),
     renderCell: ({ row }) => (
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      <Link to={`/users/${row.id}`}>
-        <Typography variant="body1" color="#000">
-          {row.fio}
-        </Typography>
-      </Link>
+      <Typography variant="body1" color="#000">
+        {row.fio}
+      </Typography>
     )
   },
   {
@@ -89,9 +89,12 @@ const TaskColumns: GridColDef[] = [
       </Typography>
     ),
     renderCell: ({ row }) => (
-      <Typography variant="body1" color="#000">
-        {row.id}
-      </Typography>
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      <Link to={`/tasks/${row.id}`}>
+        <Typography variant="body1" color="#000">
+          {row.id}
+        </Typography>
+      </Link>
     )
   },
   {
@@ -115,18 +118,16 @@ const TaskColumns: GridColDef[] = [
     flex: 0.4,
     headerAlign: 'center',
     align: 'center',
+    editable: true,
     renderHeader: () => (
       <Typography variant="body1" color="#000">
         Название
       </Typography>
     ),
     renderCell: ({ row }) => (
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      <Link to={`/tasks/${row.id}`}>
-        <Typography variant="body1" color="#000">
-          {row.title}
-        </Typography>
-      </Link>
+      <Typography variant="body1" color="#000">
+        {row.title}
+      </Typography>
     )
   },
   {

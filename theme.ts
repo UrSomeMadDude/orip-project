@@ -14,11 +14,12 @@ const theme = createTheme({
   },
   typography: {
     allVariants: {
-      color: '#fff'
+      color: '#000'
     },
     body1: {
       fontSize: '15px',
-      fontWeight: 700
+      fontWeight: 700,
+      color: '#fff'
     },
     body2: {
       fontSize: '15px',
